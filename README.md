@@ -1,3 +1,3 @@
 #Chat Application Created using Socket IO
 ###How it works.
-Can't explain now...later
+Works by using the socket Library to create a server anad a connecting client
