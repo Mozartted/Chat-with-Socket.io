@@ -54,14 +54,39 @@
         //stored in an html element prefarably id tags.
 
         $('.save').click(function(){
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
+
+
+            if($('#selected_id').attr('sendto')==$('#userid').attr('data-attr-id')){
+    	    	alert("You can't send message to your self.");
+    	    }else{
+
+    		    var data_server={
+    		    	id:$('#selected_id').attr('sendto'),
+    		    	msg:$('#m').val(),
+                    //the name is supposed to send the current user's name
+    		    	name:user_name,
+    		    };
+
+                socket.emit('send msg', );
+                $('#m').val('');
+                return false;
+    		    	$scope.msg_text='';
+    		        socket.emit(,data_server);
+
+                    $('#messages'+$('#userid').attr('data-attr-id')).append($('<li>').text(msg));
+                    notifyMe(msg);
+
+    	    }
         });
 
         //recieving a message
         socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-            notifyMe(msg);
+
         });
+
+
+        //on clicking a user the select id atrribute has to be set to the user's id
+        var selectid=function(id){
+        	$('#selected_id').attr('sendto',id);
+        }
     });
