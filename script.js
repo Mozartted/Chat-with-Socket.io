@@ -57,7 +57,7 @@
 
 
             if($('#selected_id').attr('sendto')==$('#userid').attr('data-attr-id')){
-    	    	alert("You can't send message to your self.");
+    	    	alert("You can't send message to yourself.");
     	    }else{
 
     		    var data_server={
@@ -67,14 +67,13 @@
     		    	name:user_name,
     		    };
 
-                socket.emit('send msg', );
+                socket.emit('send msg',data_server );
                 $('#m').val('');
+                $('#messages'+$('#userid')).append($('<li>').text(msg));
+                notifyMe(msg);
                 return false;
-    		    	$scope.msg_text='';
-    		        socket.emit(,data_server);
 
-                    $('#messages'+$('#userid').attr('data-attr-id')).append($('<li>').text(msg));
-                    notifyMe(msg);
+
 
     	    }
         });
