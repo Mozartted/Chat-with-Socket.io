@@ -8,14 +8,41 @@ app.get('/', function(req, res){
     res.sendFile(__dirname+'/index.html');
 });
 
+var username=[];
+//an array of users have been created.
+
+
 //instantiating a socket connection, handling all
 //incomming connection from clients
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
 
-    //collecting the message
-    socket.on('chat message', function(msg){
-        //emitting the signal again
-        io.emit('chat message', msg);
+
+    socket.on('user name',function(user_name){
+      users.push({id:socket.id,user_name:user_name});
+      len=users.length;
+      len--;
+      //Sending th user Id and List of users
+      io.emit('user entrance',users,users[len].id);
+    });
+
+    //collecting the message form a client
+    socket.on('chat message', function(data_server){
+        //emitting the signal again. telling the client to
+        //update the chat with the arguement data, but now
+        //we are going to add username.
+        io.broadcast.emit('chat message',socket.username, msg);
+         socket
+         .broadcast
+         .to(data_server.id)
+         .emit(
+             'get msg',
+             {
+                 msg:data_server.msg,
+                 id:data_server.id,
+                 name:data_server.name
+             }
+         );
+         //broadcasting to a specific user with a user id in data_server
     });
 });
 
