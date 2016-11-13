@@ -4,6 +4,10 @@ var http = require('http').Server(app);
 //attaching socket io to our server
 var io = require('socket.io')(http);
 
+app.use(,function(){
+
+});
+
 app.get('/', function(req, res){
     res.sendFile(__dirname+'/index.html');
 });
@@ -25,7 +29,7 @@ io.sockets.on('connection', function(socket){
       io.emit('user entrance',users,users[len].id);
     });
 
-    //collecting the message form a client
+    //collecting the message from a client
     socket.on('chat message', function(data_server){
         //emitting the signal again. telling the client to
         //update the chat with the arguement data, but now

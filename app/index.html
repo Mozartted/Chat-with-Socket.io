@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font: 13px Helvetica, Arial; }
@@ -14,17 +15,22 @@
         #messages li:nth-child(odd) { background: #eee; }
     </style>
 </head>
-<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <body>
-    <div>
+    <div class="row"></div>
+    <div class="col s8">
         <ul id="messages"></ul>
         <form action="">
             <input id="m" autocomplete="off" /><button class="save">Send</button>
         </form>
     </div>
-    <div>
+    <div class="col s4">
+        <ul>
+
+
+        </ul>
         <span id="userid"  data-attr-id=""></span>
     </div>
 
