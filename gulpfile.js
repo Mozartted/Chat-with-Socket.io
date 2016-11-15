@@ -34,3 +34,6 @@ gulp.task('serve',['styles','scripts'],function(){
 
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
+
+
+gulp.task('default', ['serve']);
