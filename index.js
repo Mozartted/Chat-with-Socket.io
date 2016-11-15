@@ -4,12 +4,8 @@ var http = require('http').Server(app);
 //attaching socket io to our server
 var io = require('socket.io')(http);
 
-app.use(,function(){
-
-});
-
 app.get('/', function(req, res){
-    res.sendFile(__dirname+'app/index.html');
+    res.sendFile(__dirname+'/app/index.html');
 });
 
 var username=[];
