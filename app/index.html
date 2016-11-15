@@ -3,9 +3,10 @@
 <head>
     <title>Socket.IO chat</title>
     <link rel="stylesheet" href="dist/css/materialize.css">
-    <script src="dist/js/jquery.js"></script>
     <link rel="stylesheet" href="dist/js/materialize.js">
+    <script src="dist/js/jquery.js"></script>
     <style>
+        /**
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font: 13px Helvetica, Arial; }
         form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
@@ -14,10 +15,13 @@
         #messages { list-style-type: none; margin: 0; padding: 0; }
         #messages li { padding: 5px 10px; }
         #messages li:nth-child(odd) { background: #eee; }
+
+        **/
     </style>
 </head>
 <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+<script src="dist/js/script.js"></script>
 
 <body>
     <div class="container row">
@@ -34,10 +38,6 @@
             </ul>
             <span id="userid"  data-attr-id=""></span>
         </div>
-
-
-
-
     </div>
 
 </body>

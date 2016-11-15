@@ -17,6 +17,7 @@ gulp.task('scripts',function() {
     return gulp.src(
         [
             'node_modules/jquery/dist/jquery.js',
+            'app/script.js',
             'node_modules/materialize-css/dist/js/materialize.js'
 
         ])
