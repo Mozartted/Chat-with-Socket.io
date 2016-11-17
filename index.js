@@ -8,7 +8,7 @@ app.get('/', function(req, res){
     res.sendFile(__dirname+'/app/index.html');
 });
 
-var username=[];
+var users=[];
 //an array of users have been created.
 
 
@@ -30,7 +30,6 @@ io.sockets.on('connection', function(socket){
         //emitting the signal again. telling the client to
         //update the chat with the arguement data, but now
         //we are going to add username.
-        io.broadcast.emit('chat message',socket.username, msg);
          socket
          .broadcast
          .to(data_server.id)
