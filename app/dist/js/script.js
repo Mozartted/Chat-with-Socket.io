@@ -42,11 +42,23 @@
         socket.on('user entrance',function(data,my_id){
         	//checking the user id
             //accessing it via jquery
-            var userid=$('#userid').text();
+            var userid=$('#userid').attr('data-attr-id');
         	if(userid==null){
         	    $('#userid').attr('data-attr-id',my_id);
         	}
-            $('#userid').text()=data;
+            //data is a full list of all the users in chat as at current
+            //foreach user in data we'll add a user to the  users classed
+            //unordered list.
+
+            //first we parse the data
+            $.each(data,function(key,val){
+                var id=val.id,
+                    username=val.user_name;
+
+                //the next step appends this user to the list view
+                $('.users').append('<li id="'.id.'" onclick=selectid('.id.')>'.username.'</li>');
+            });
+
     	});
 
         //for the appliction to truly send messages to a different user the
@@ -67,7 +79,7 @@
     		    	name:user_name,
     		    };
 
-                socket.emit('send msg',data_server );
+                socket.emit('chat message',data_server );
                 $('#m').val('');
                 $('#messages'+$('#userid')).append($('<li>').text(msg));
                 notifyMe(msg);
@@ -79,9 +91,13 @@
         });
 
         //recieving a message
-        socket.on('chat message', function(msg){
+        socket.on('get msg',function(data){
+    		var message=data.msg,
+                id=data.id,
+                name=data.name;
 
-        });
+
+    	});
 
 
         //on clicking a user the select id atrribute has to be set to the user's id
@@ -89,3 +105,13 @@
         	$('#selected_id').attr('sendto',id);
         }
     });
+
+
+/*
+|-------------------------------------------------------------
+| Note: the user sends a message by first clicking the user
+|       they'd like to message and then send their message
+|       the user been clicked upon is sent stored in the
+|       #selected_id element
+|-------------------------------------------------------------
+*/
