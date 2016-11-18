@@ -104,6 +104,8 @@
         var selectid=function(id){
         	$('#selected_id').attr('sendto',id);
         }
+
+        $('ul.tabs').tabs();
     });
 
 
