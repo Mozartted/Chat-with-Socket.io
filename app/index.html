@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-    <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="dist/css/materialize.css">
-    <link rel="stylesheet" href="dist/js/materialize.js">
+    <title>Chat With Socket.IOt</title>
     <script src="dist/js/jquery.js"></script>
+    <link rel="stylesheet" href="dist/css/materialize.css">
+
     <style>
         /**
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,32 +20,150 @@
             width: 100%;
         }
 
+        .flex{
+            position: fixed;
+            height:100%;
+        }
+
+        .tabs .indicator {
+            position: none;
+            bottom: 0;
+            height: 0px;
+            background-color: #f6b2b5;
+            will-change: left, right;
+        }
+
+        .tabs {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: auto;
+            width: 100%;
+            background-color: #fff;
+            margin: 0 auto;
+            white-space: nowrap;
+        }
+
+        @media only screen and (max-width: 992px){
+            .tabs {
+                display: block;
+            }
+        }
+
+
+        .tabs a.active{
+            display: block;
+            border-left: #ed1c34 solid 2px;
+        }
+
+        .tabs .tab {
+            display: flex;
+            text-align: center;
+            line-height: 48px;
+            height: 48px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .incoming{
+            padding:12px;
+        }
+
         form { padding: 3px; position: fixed; bottom: 0; width: 100%; }
     </style>
 </head>
-<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="dist/js/materialize.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="dist/js/script.js"></script>
 
 <body>
-    <div class="row inline" >
-        <div class="col s8 ">
-            <ul id="messages"></ul>
-            <div>
-                <form action="">
-                    <input id="m" autocomplete="off" /><button class="save">Send</button>
-                </form>
+    <div class="container">
+        <div class="row" >
+            <div class="col s4">
+
+                <ul class="users tabs " >
+                    <li class="tab "><a href="#userID1" class="active"><div>Mozartted</div></a></li>
+                    <li class="tab "><a href="#userID2" ><div>Neal</div></a></li>
+                    <li class="tab "><a href="#userID3" ><div>Oscar</div></a></li>
+                </ul>
+                <span id="userid"  data-attr-id=""></span>
+                <span id="selected_id" sendto=""></span>
             </div>
-        </div>
-        <div class="col s4">
-            <ul class="users">
+            <div class="col s8 ">
+                <div id="userID1">
+                    <ul id="messages">
+                        <li>
+                            <div class="row">
+                                <div class="col s8 push-s4 blue white-text incoming">
+                                    inco
+                                </div>
+                            </div>
 
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s8 red white-text incoming">
+                                    test
+                                </div>
+                            </div>
 
-            </ul>
-            <span id="userid"  data-attr-id=""></span>
-            <span id="selected_id" sendto=""></span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="userID2">
+                    <ul id="messages">
+                        <li>
+                            <div class="row">
+                                <div class="col s8 push-s4 blue white-text incoming">
+                                    inco
+                                </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s8 red white-text incoming">
+                                    test
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <div id="userID3">
+                    <ul id="messages">
+                        <li>
+                            <div class="row">
+                                <div class="col s8 push-s4 blue white-text incoming">
+                                    inco
+                                </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s8 red white-text incoming">
+                                    test
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <form action="">
+                        <input id="m" autocomplete="off" /><button class="save btn-flat blue white-text">Send</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
 
 </body>
 </html>
