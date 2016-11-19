@@ -21,7 +21,7 @@ io.sockets.on('connection', function(socket){
       users.push({id:socket.id,user_name:user_name});
       len=users.length;
       len--;
-      //Sending th user Id and List of users
+      //Sending the user Id and List of users
       io.emit('user entrance',users,users[len].id);
     });
 
@@ -38,6 +38,7 @@ io.sockets.on('connection', function(socket){
              {
                  msg:data_server.msg,
                  id:data_server.id,
+                 senderid:data_server.senderid,
                  name:data_server.name
              }
          );

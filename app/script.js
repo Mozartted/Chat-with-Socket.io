@@ -59,7 +59,7 @@
                 $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" class="active"><div>'.username.'</div></a></li>');
                 $('#chat-sections').append('<div id="user'.+id.'">
                     <ul id="messages">
-                        
+
                     </ul>
                 </div>');
             });
@@ -79,6 +79,7 @@
 
     		    var data_server={
     		    	id:$('#selected_id').attr('sendto'),
+                    senderid:$('#userid').attr('data-attr-id'),
     		    	msg:$('#m').val(),
                     //the name is supposed to send the current user's name
     		    	name:user_name,
@@ -96,10 +97,16 @@
         });
 
         //recieving a message
+        //when a message is gotten it has to be appended to the correct
+        //message box belonging to the id of the user who sent it.
         socket.on('get msg',function(data){
     		var message=data.msg,
                 id=data.id,
-                name=data.name;
+                name=data.name,
+                sentfrom=data.senderid;
+
+                //updatig the right message box
+                $('#user'+sentfrom).append('')
 
 
     	});
