@@ -106,7 +106,14 @@
                 sentfrom=data.senderid;
 
                 //updatig the right message box
-                $('#user'+sentfrom).append('')
+                $('#user'+sentfrom).append('
+                    <div class="row">
+                        <div class="col s8 red white-text incoming">
+                            '.message.'
+                        </div>
+                    </div>'
+
+                );
 
 
     	});
