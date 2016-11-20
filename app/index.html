@@ -1,106 +1,109 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <title>Chat With Socket.IOt</title>
     <script src="dist/js/jquery.js"></script>
     <link rel="stylesheet" href="dist/css/materialize.css">
+    <script src="dist/js/materialize.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="dist/js/script.js"></script>
 
-    <style>
-        /**
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font: 13px Helvetica, Arial; }
-        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-        #messages { list-style-type: none; margin: 0; padding: 0; }
-        #messages li { padding: 5px 10px; }
-        #messages li:nth-child(odd) { background: #eee; }
-        **/
-        .inline{
-            height:100%;
-            width: 100%;
-        }
-
-        .flex{
-            position: fixed;
-            height:100%;
-        }
-
-        .tabs .indicator {
-            position: none;
-            bottom: 0;
-            height: 0px;
-            background-color: #f6b2b5;
-            will-change: left, right;
-        }
-
-        .tabs {
-            position: relative;
-            overflow-x: auto;
-            overflow-y: hidden;
-            height: auto;
-            width: 100%;
-            background-color: #fff;
-            margin: 0 auto;
-            white-space: nowrap;
-        }
-
-        @media only screen and (max-width: 992px){
-            .tabs {
-                display: block;
-            }
-        }
-
-
-        .tabs a.active{
-            display: block;
-            border-left: #ed1c34 solid 2px;
-        }
-
-        .tabs .tab {
-            display: flex;
-            text-align: center;
-            line-height: 48px;
-            height: 48px;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            text-transform: uppercase;
-        }
-
-        .incoming{
-            padding:12px;
-        }
-
-        form { padding: 3px; position: fixed; bottom: 0; width: 100%; }
-    </style>
 </head>
-<script src="dist/js/materialize.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="dist/js/script.js"></script>
 
 <body>
-    <div class="container">
-        <div class="col s12" >
-            <div class="card col s4">
+    <div>
+        <div class="row">
+            <div class="col s12" >
+                <div class="col s4">
+                    <div class="card">
+                        <div class="collection users " >
+                            <div class="collection-item active">
+                                <span class="title">Mozart</span>
+                            </div>
+                            <div class="collection-item ">
+                                <span class="title">Mozart</span>
+                            </div>
+                            <div class="collection-item">
+                                <span class="title">Mozart</span>
+                            </div>
+                            <div class="collection-item">
+                                <span class="title">Mozart</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <ul class="users tabs " >
-
-                </ul>
-                <span id="userid"  data-attr-id=""></span>
-                <span id="selected_id" sendto=""></span>
-            </div>
-            <div class=" card col s8 " id="chat-sections">
-
-                <div>
-                    <form action="">
-                        <input id="m" autocomplete="off" /><button class="save btn-flat blue white-text">Send</button>
-                    </form>
+                    <span id="userid"  data-attr-id=""></span>
+                    <span id="selected_id" sendto=""></span>
                 </div>
+                <div class="card col s8 " id="chat-sections">
+                    <div>
+                        <div class="header" style="padding:12px" >
+                            <span class="header_medium color-grey">Messages</span>
+                            <p><small class="color-grey">Users your currently chatting with</small></p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="tab-content active" id="tab-2">
+                        <div class="card-content sections">
+                            <div>
+                                <ul class="user-message">
+                                    <li>
+                                        <div class="message">
+                                            <span class="message-head">Mozartted <small>-10pm</small></span>
+                                                  <p>A new Idea behind coding works</p>
+                                            </div>
+                                        </li>
+                                       <div class="divider"></div>
+                                        <li>
+                                            <div class="message">
+                                                <span class="message-head">Mozartted <small>-10pm</small></span>
+                                                <p>A new Idea behind coding works</p>
+                                            </div>
+                                        </li>
+                                        <div class="divider"></div>
+                                        <li>
+                                            <div class="message">
+                                                <span class="message-head">Mozartted <small>-10pm</small></span>
+                                                <p>A new Idea behind coding works</p>
+                                            </div>
+                                        </li>
+                                        <div class="divider"></div>
+                                        <li>
+                                            <div class="message">
+                                                <span class="message-head">Mozartted <small>-10pm</small></span>
+                                                <p>A new Idea behind coding works</p>
+                                            </div>
+                                        </li>
+                                        <div class="divider"></div>
+                                        <li>
+                                            <div class="message">
+                                                <span class="message-head">Mozartted <small>-10pm</small></span>
+                                                <p>A new Idea behind coding works</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+
+
+                    <div class="divider"></div>
+                    <div class="card-action" style="padding:12px;">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                <label for="textarea1">Chat box type your fill</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
-
     </div>
+
 
 
 </body>
