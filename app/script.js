@@ -56,12 +56,10 @@
                     username=val.user_name;
 
                 //the next step appends this user to the list view
-                $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" class="active"><div>'.username.'</div></a></li>');
-                $('#chat-sections').append('<div id="user'.+id.'">
-                    <ul id="messages">
+                $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" ><div>'.username.'</div></a></li>');
 
-                    </ul>
-                </div>');
+                //create a view for the user added
+                $('#chat-sections').append('<div id="user'.+id.'"> </div>');
             });
 
     	});
