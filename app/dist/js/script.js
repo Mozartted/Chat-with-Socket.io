@@ -1,5 +1,7 @@
 
     $(document).ready(function(){
+        var user_name=window.prompt('Enter Your Name');
+
         function notifyMe(message) {
             // Let's check if the browser supports notifications
             if (!("Notification" in window)) {
@@ -34,7 +36,7 @@
         var socket = io();
         //here the user is prompted for his username and then the said username
         //sent to the server to store the username.
-        var user_name=window.prompt('Enter Your Name');
+
         socket.emit('user name',user_name);
 
         //this section collects the userid from the server
@@ -56,12 +58,10 @@
                     username=val.user_name;
 
                 //the next step appends this user to the list view
-                $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" class="active"><div>'.username.'</div></a></li>');
-                $('#chat-sections').append('<div id="user'.+id.'">
-                    <ul id="messages">
+                $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" ><div>'.username.'</div></a></li>');
 
-                    </ul>
-                </div>');
+                //create a view for the user added
+                $('#chat-sections').append('<div id="user'.+id.'"> </div>');
             });
 
     	});
@@ -86,8 +86,17 @@
     		    };
 
                 socket.emit('chat message',data_server );
+
+                $('#user'+data_server.senderid).append('
+                    <div class="row">
+                        <div class="col s8 push-s4 blue white-text incoming">
+                            '.data_server.msg.'
+                        </div>
+                    </div>'
+
+                );
                 $('#m').val('');
-                $('#messages'+$('#userid')).append($('<li>').text(msg));
+
                 notifyMe(msg);
                 return false;
 
@@ -106,13 +115,20 @@
                 sentfrom=data.senderid;
 
                 //updatig the right message box
-                $('#user'+sentfrom).append('')
+                $('#user'+sentfrom).append('
+                    <div class="row">
+                        <div class="col s8 red white-text incoming">
+                            '.message.'
+                        </div>
+                    </div>'
+
+                );
 
 
     	});
 
 
-        //on clicking a user the select id atrribute has to be set to the user's id
+        //on clicking a user the select id atrribute has to be set to the user's //id
         var selectid=function(id){
         	$('#selected_id').attr('sendto',id);
         }
