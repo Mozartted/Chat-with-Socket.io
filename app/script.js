@@ -86,8 +86,8 @@
     		    };
 
                 socket.emit('chat message',data_server );
-                var userid=$('#userid').attr('data-attr-id');
-                $('#user'+userid).append('
+
+                $('#user'+data_server.senderid).append('
                     <div class="row">
                         <div class="col s8 push-s4 blue white-text incoming">
                             '.data_server.msg.'
@@ -96,7 +96,7 @@
 
                 );
                 $('#m').val('');
-                
+
                 notifyMe(msg);
                 return false;
 
