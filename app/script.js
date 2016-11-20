@@ -133,7 +133,17 @@
         	$('#selected_id').attr('sendto',id);
         }
 
-        $('ul.tabs').tabs();
+        //custom tab sectioning for message view
+        $('div.tabbed div').click(function(){
+    		var tab_id = $(this).attr('data-tab');
+
+    		$('div.tabbed div').removeClass('active');
+    		$('.tab-content').removeClass('active');
+
+    		$(this).addClass('active');
+    		$("#"+tab_id).addClass('active');
+    	})
+
     });
 
 
