@@ -6,6 +6,7 @@ gulp.task('styles',function() {
     return gulp.src(
         [
             'node_modules/materialize-css/dist/css/materialize.css',
+            'style.css'
         ])
     .pipe(gulp.dest("app/dist/css"))
     .pipe(browserSync.stream());
@@ -17,7 +18,7 @@ gulp.task('scripts',function() {
     return gulp.src(
         [
             'node_modules/jquery/dist/jquery.js',
-            'app/script.js',
+            'script.js',
             'node_modules/materialize-css/dist/js/materialize.js'
 
         ])
@@ -33,6 +34,9 @@ gulp.task('serve',['styles','scripts'],function(){
         }
     });
 
+    gulp.watch("styles.css", ['styles']);
+    gulp.watch("index.js", ['scripts']);
+    gulp.watch("script.js", ['scripts']);
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
