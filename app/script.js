@@ -86,8 +86,17 @@
     		    };
 
                 socket.emit('chat message',data_server );
+                var userid=$('#userid').attr('data-attr-id');
+                $('#user'+userid).append('
+                    <div class="row">
+                        <div class="col s8 push-s4 blue white-text incoming">
+                            '.data_server.msg.'
+                        </div>
+                    </div>'
+
+                );
                 $('#m').val('');
-                $('#messages'+$('#userid')).append($('<li>').text(msg));
+                
                 notifyMe(msg);
                 return false;
 
@@ -119,7 +128,7 @@
     	});
 
 
-        //on clicking a user the select id atrribute has to be set to the user's id
+        //on clicking a user the select id atrribute has to be set to the user's //id
         var selectid=function(id){
         	$('#selected_id').attr('sendto',id);
         }
