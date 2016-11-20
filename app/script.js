@@ -58,10 +58,58 @@
                     username=val.user_name;
 
                 //the next step appends this user to the list view
-                $('.users').append('<li class="tab" id="'.id.'" onclick=selectid('.id.')><a href="#user'.+id.'" ><div>'.username.'</div></a></li>');
+                $('.users').append('
+                <div class="collection-item" id="'.id.'">
+                        <span class="title">'.username.'</span>
+                    </div>'
+                );
 
                 //create a view for the user added
                 $('#chat-sections').append('<div id="user'.+id.'"> </div>');
+
+                /**
+                <div class="tab-content active" id="tab-2">
+                    <div>
+                        <ul class="user-message">
+                            <li>
+                                <div class="message">
+                                    <span class="message-head">Mozartted <small>-10pm</small></span>
+                                          <p>A new Idea behind coding works</p>
+                                    </div>
+                                </li>
+                               <div class="divider"></div>
+                                <li>
+                                    <div class="message">
+                                        <span class="message-head">Mozartted <small>-10pm</small></span>
+                                        <p>A new Idea behind coding works</p>
+                                    </div>
+                                </li>
+                                <div class="divider"></div>
+                                <li>
+                                    <div class="message">
+                                        <span class="message-head">Mozartted <small>-10pm</small></span>
+                                        <p>A new Idea behind coding works</p>
+                                    </div>
+                                </li>
+                                <div class="divider"></div>
+                                <li>
+                                    <div class="message">
+                                        <span class="message-head">Mozartted <small>-10pm</small></span>
+                                        <p>A new Idea behind coding works</p>
+                                    </div>
+                                </li>
+                                <div class="divider"></div>
+                                <li>
+                                    <div class="message">
+                                        <span class="message-head">Mozartted <small>-10pm</small></span>
+                                        <p>A new Idea behind coding works</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                **/
             });
 
     	});
