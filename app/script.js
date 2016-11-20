@@ -1,5 +1,7 @@
 
     $(document).ready(function(){
+        var user_name=window.prompt('Enter Your Name');
+
         function notifyMe(message) {
             // Let's check if the browser supports notifications
             if (!("Notification" in window)) {
@@ -34,7 +36,7 @@
         var socket = io();
         //here the user is prompted for his username and then the said username
         //sent to the server to store the username.
-        var user_name=window.prompt('Enter Your Name');
+
         socket.emit('user name',user_name);
 
         //this section collects the userid from the server
