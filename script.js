@@ -59,7 +59,7 @@
 
                 //the next step appends this user to the list view
                 $('.users').append('
-                <div class="collection-item" id="'.id.'">
+                <div class="collection-item" data-tab="'.id.'">
                         <span class="title">'.username.'</span>
                     </div>'
                 );
