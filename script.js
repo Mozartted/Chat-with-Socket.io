@@ -134,12 +134,14 @@
     		    };
 
                 socket.emit('chat message',data_server );
+                var currentDate=new Date();
+
 
                 $('#'+data_server.senderid).append('
                 <div class="message">
 
                     <p>'.data_server.msg.'</p>
-                    <small>-10pm</small>
+                    <small>'.currentDate.getMinutes() + currentDate.getSeconds().'</small>
                 </div>
                <div class="divider"></div>'
 
