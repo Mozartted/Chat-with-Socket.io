@@ -65,7 +65,7 @@
                 );
 
                 //create a view for the user added
-                $('#chat-sections').append('<div id="user'.+id.'"> </div>');
+                $('#chat-sections').append('<div class="tab-content active" id="'.id.'"></div>');
 
                 /**
                 <div class="tab-content active" id="tab-2">
@@ -135,12 +135,13 @@
 
                 socket.emit('chat message',data_server );
 
-                $('#user'+data_server.senderid).append('
-                    <div class="row">
-                        <div class="col s8 push-s4 blue white-text incoming">
-                            '.data_server.msg.'
-                        </div>
-                    </div>'
+                $('#'+data_server.senderid).append('
+                <div class="message">
+
+                    <p>'.data_server.msg.'</p>
+                    <small>-10pm</small>
+                </div>
+               <div class="divider"></div>'
 
                 );
                 $('#m').val('');
