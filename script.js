@@ -65,7 +65,7 @@
                 );
 
                 //create a view for the user added
-                $('#chat-sections').append('<div class="tab-content active" id="'.id.'"></div>');
+                $('#chat-sections').append('<div class="tab-content" id="'.id.'"></div>');
 
                 /**
                 <div class="tab-content active" id="tab-2">
