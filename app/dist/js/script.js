@@ -2,6 +2,17 @@
     $(document).ready(function(){
         var user_name=window.prompt('Enter Your Name');
 
+        //custom tab sectioning for message view
+        $('div.tabbed div').click(function(){
+            var tab_id = $(this).attr('data-tab');
+
+            $('div.tabbed div').removeClass('active');
+            $('.tab-content').removeClass('active');
+
+            $(this).addClass('active');
+            $("#"+tab_id).addClass('active');
+        });
+
         function notifyMe(message) {
             // Let's check if the browser supports notifications
             if (!("Notification" in window)) {
@@ -58,58 +69,11 @@
                     username=val.user_name;
 
                 //the next step appends this user to the list view
-                $('.users').append('
-                <div class="collection-item" id="'.id.'">
-                        <span class="title">'.username.'</span>
-                    </div>'
-                );
+                $('.users').append('<div class="collection-item" data-tab="'+id+'"></div>')
+                .append('<span class="title">'+username+'</span>');
 
                 //create a view for the user added
-                $('#chat-sections').append('<div id="user'.+id.'"> </div>');
-
-                /**
-                <div class="tab-content active" id="tab-2">
-                    <div>
-                        <ul class="user-message">
-                            <li>
-                                <div class="message">
-                                    <span class="message-head">Mozartted <small>-10pm</small></span>
-                                          <p>A new Idea behind coding works</p>
-                                    </div>
-                                </li>
-                               <div class="divider"></div>
-                                <li>
-                                    <div class="message">
-                                        <span class="message-head">Mozartted <small>-10pm</small></span>
-                                        <p>A new Idea behind coding works</p>
-                                    </div>
-                                </li>
-                                <div class="divider"></div>
-                                <li>
-                                    <div class="message">
-                                        <span class="message-head">Mozartted <small>-10pm</small></span>
-                                        <p>A new Idea behind coding works</p>
-                                    </div>
-                                </li>
-                                <div class="divider"></div>
-                                <li>
-                                    <div class="message">
-                                        <span class="message-head">Mozartted <small>-10pm</small></span>
-                                        <p>A new Idea behind coding works</p>
-                                    </div>
-                                </li>
-                                <div class="divider"></div>
-                                <li>
-                                    <div class="message">
-                                        <span class="message-head">Mozartted <small>-10pm</small></span>
-                                        <p>A new Idea behind coding works</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                **/
+                $('#chat-sections').append('<div class="tab-content" id="'+id+'"></div>');
             });
 
     	});
@@ -134,21 +98,14 @@
     		    };
 
                 socket.emit('chat message',data_server );
+                var currentDate=new Date();
 
-                $('#user'+data_server.senderid).append('
-                    <div class="row">
-                        <div class="col s8 push-s4 blue white-text incoming">
-                            '.data_server.msg.'
-                        </div>
-                    </div>'
 
-                );
+                $('#'+data_server.senderid).append('<div class="message"></div>').append('<p>'+data_server.msg+'</p><small>'+currentDate.getMinutes() + currentDate.getSeconds()+'</small>');
                 $('#m').val('');
 
                 notifyMe(msg);
                 return false;
-
-
 
     	    }
         });
@@ -163,14 +120,7 @@
                 sentfrom=data.senderid;
 
                 //updatig the right message box
-                $('#user'+sentfrom).append('
-                    <div class="row">
-                        <div class="col s8 red white-text incoming">
-                            '.message.'
-                        </div>
-                    </div>'
-
-                );
+                $('#user'+sentfrom).append('<div class="row"></div>').append('<div class="col s8 red white-text incoming">'+message+'</div>');
 
 
     	});
@@ -181,16 +131,7 @@
         	$('#selected_id').attr('sendto',id);
         }
 
-        //custom tab sectioning for message view
-        $('div.tabbed div').click(function(){
-    		var tab_id = $(this).attr('data-tab');
 
-    		$('div.tabbed div').removeClass('active');
-    		$('.tab-content').removeClass('active');
-
-    		$(this).addClass('active');
-    		$("#"+tab_id).addClass('active');
-    	})
 
     });
 
