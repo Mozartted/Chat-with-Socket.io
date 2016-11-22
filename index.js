@@ -1,11 +1,15 @@
-var app = require('express')();
-var http = require('http').Server(app);
+var express = require('express');
+var path=require('path');
+var http = require('http');
+var app=express();
 
 //attaching socket io to our server
 var io = require('socket.io')(http);
 
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'app')));
 app.get('/', function(req, res){
-    res.sendFile(__dirname+'/app/index.html');
+    res.sendFile(__dirname+'/index.html');
 });
 
 var users=[];
@@ -46,6 +50,6 @@ io.sockets.on('connection', function(socket){
     });
 });
 
-http.listen(3000, function(){
-    console.log('listening on *:3000');
+http.createServer(app).listen(app.get('port'), function(){
+console.log('Express server listening on port ' + app.get('port'));
 });
