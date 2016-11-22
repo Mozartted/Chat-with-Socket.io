@@ -69,8 +69,7 @@
                     username=val.user_name;
 
                 //the next step appends this user to the list view
-                $('.users').append('<div class="collection-item" data-tab="'+id+'"></div>')
-                .append('<span class="title">'+username+'</span>');
+                $('.users').append('<div class="collection-item" data-tab="'+id+'"><span class="title">'+username+'</span></div>')
 
                 //create a view for the user added
                 $('#chat-sections').append('<div class="tab-content" id="'+id+'"></div>');

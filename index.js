@@ -3,9 +3,8 @@ var path=require('path');
 var http = require('http');
 var app=express();
 
-//attaching socket io to our server
-var io = require('socket.io')(http);
 
+//attaching socket io to our server
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'app')));
 app.get('/', function(req, res){
@@ -15,6 +14,8 @@ app.get('/', function(req, res){
 var users=[];
 //an array of users have been created.
 
+var httpServer=http.createServer(app);
+var io = require('socket.io').listen(httpServer);
 
 //instantiating a socket connection, handling all
 //incomming connection from clients
@@ -50,6 +51,6 @@ io.sockets.on('connection', function(socket){
     });
 });
 
-http.createServer(app).listen(app.get('port'), function(){
+httpServer.listen(app.get('port'), function(){
 console.log('Express server listening on port ' + app.get('port'));
 });
